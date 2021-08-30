@@ -1,16 +1,20 @@
 ## Overview
-This is an implementation in Pytorch of [the paper](https://arxiv.org/abs/1509.02971) titled "CONTINUOUS CONTROL WITH DEEP REINFORCEMENT LEARNING". Features in the RL algorithm are:
+This is an implementation in Pytorch of [the paper](https://arxiv.org/abs/1509.02971) titled "CONTINUOUS CONTROL WITH DEEP REINFORCEMENT LEARNING". The algorithm is called DDPG (Deep Deterministic Policy Gradient). Features in this RL algorithm are:
 
 * Deep reinforcement learning for continuos action spaces
-* Actor-Critic, model-free algorithm and deterministic policy
+* Actor-Critic Architechture, model-free algorithm and deterministic policy
 * Find policy which competitive performance comparing with those found by planning algorithms (with have a full acess to the environment dynamics)
 
 ## Set up requirement
 - Install Pytorch, gym, numpy and matplotlib
 - Run `main.py`
 
-## Backgroud knowledge
-Q learning is a common off-policy algorithm which uses greedy policy (choose action with has maximum value). Recent advandves allowed a scale-up Q Learning which use large neural network as a function approximators for values or action values functions.
+## Backgroud of the algorithm
+Off-policy learning is a process where behavior policy is different than the policy used during learning process. As in deterministic policy, the expected value of action-value only depends on the environment (the reward), it is possible to apply off-policy learning where the training is conducted with transitions sampled from different behavior policy.
+
+Q learning is a common off-policy algorithm which uses greedy policy (choose action with has maximum value). However, this approach was perceived to unstable if using large, non-linear function approximators. Recent advances allowed a scale-up Q Learning which use large neural network as a function approximators for action values functions in Deep Q Network (DQN).
+
+On the other hand, it is not straight forward to apply Q-Learning for continuous action spaces. A workaround on this matter is using an actor-critic approach based on the DPG (Deterministic Policy Gradient) algorithm. In DPG, the actor function is parameterised and specifies the current policy by mapping states to specific actions.
 
 ## Implementation
 
